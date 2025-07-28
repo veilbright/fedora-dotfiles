@@ -1,0 +1,4 @@
+enable_audio_bell no
+
+font_family family="IosevkaTerm Nerd Font"
+font_size 12.0
