@@ -17,6 +17,7 @@
 
 # Input
     input type:touchpad scroll_factor 0.25
+    input type:pointer accel_profile flat
     input type:keyboard repeat_delay 250
     input type:keyboard repeat_rate 25
 
@@ -25,6 +26,7 @@
     bindsym $mod+Shift+q kill
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
+    bindsym $mod+Ctrl+l exec systemctl suspend
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     floating_modifier $mod normal

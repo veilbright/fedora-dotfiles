@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "spacing": 0,
+    "spacing": 8,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -13,6 +13,7 @@
     ],
     "modules-right": [
         "mpd",
+        "tray",
         "pulseaudio",
         "power-profiles-daemon",
         "cpu",
@@ -20,7 +21,6 @@
         "battery",
         "battery#bat2",
         "clock",
-        "tray"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -88,7 +88,7 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}%  ",
         "tooltip": false
     },
     "memory": {
@@ -105,7 +105,8 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        // "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        "format-icons": ["󰄰 ", "󰪞 ", "󰪟 ", "󰪠 ", "󰪡 ", "󰪢 ", "󰪣 ", "󰪤 ", "󰪥 "]
     },
     "battery": {
         "states": {
@@ -115,12 +116,14 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}%  ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        }
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -151,7 +154,7 @@
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "󰸈 {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": "",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": " ",

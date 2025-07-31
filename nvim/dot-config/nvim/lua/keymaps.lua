@@ -2,6 +2,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {desc = "Hide search highlig
 vim.keymap.set("n", "<leader><leader>", "@q", {desc = "Run q macro"})
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", {desc = "Toggle wrap"})
 
+-- Buffer navigation
+vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<C-s>", "<cmd>bn<CR>", { desc = "Next buffer" })
+
 -- Window focus
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right window" })
