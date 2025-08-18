@@ -14,6 +14,7 @@
     "modules-right": [
         "mpd",
         "tray",
+        "network",
         "pulseaudio",
         "power-profiles-daemon",
         "cpu",
@@ -140,12 +141,11 @@
       }
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-wifi": " ",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{essid} ({signalStrength}%)",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠ ",
+        "format-disconnected": "⚠ ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {

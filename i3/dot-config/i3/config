@@ -5,21 +5,20 @@
     set $up k
     set $right l
     set $term kitty
-    set $rofi_cmd rofi -terminal '$term'
-    set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+    set $menu rofi -terminal '$term' -show combi -combi-modes drun#run -modes combi
 
 # Output
-    output eDP-1 pos 640 1080 scale 1.5
-    output DP-3 pos 0 0
+    # output eDP-1 pos 640 1080 scale 1.5
+    # output DP-3 pos 0 0
 
     workspace 1 output eDP-1
     workspace 2 output DP-3
 
 # Input
-    input type:touchpad scroll_factor 0.25
-    input type:pointer accel_profile flat
-    input type:keyboard repeat_delay 250
-    input type:keyboard repeat_rate 25
+    # input type:touchpad scroll_factor 0.25
+    # input type:pointer accel_profile flat
+    # input type:keyboard repeat_delay 250
+    # input type:keyboard repeat_rate 25
 
 # Key bindings
     bindsym $mod+Return exec $term
@@ -27,9 +26,9 @@
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
     bindsym $mod+Ctrl+l exec systemctl suspend
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X11 session.' -B 'Yes, exit i3' 'i3-msg exit'
 
-    floating_modifier $mod normal
+    # floating_modifier $mod normal
 
 # Navigation
     # Move your focus
@@ -38,21 +37,11 @@
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
-    bindsym $mod+left focus left
-    bindsym $mod+down focus down
-    bindsym $mod+up focus up
-    bindsym $mod+right focus right
-
     # Move the focused window
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-
-    bindsym $mod+Shift+left move left
-    bindsym $mod+Shift+down move down
-    bindsym $mod+Shift+up move up
-    bindsym $mod+Shift+right move right
 
 # Workspaces
     # Switch to workspace
@@ -94,7 +83,7 @@
 
 # Appearance
     default_border pixel
-    mouse_warping container
+    # mouse_warping container
     font pango:Iosevka Aile 10
 
 # Scratchpad
@@ -118,5 +107,3 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
