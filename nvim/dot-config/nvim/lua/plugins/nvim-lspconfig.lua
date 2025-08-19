@@ -1,4 +1,4 @@
-return {
+if not vim.g.vscode then return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"williamboman/mason.nvim",
@@ -72,3 +72,4 @@ return {
 		end
 	end,
 }
+end

@@ -1,4 +1,4 @@
-return {
+if not vim.g.vscode then return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	main = "nvim-treesitter.configs",
@@ -8,3 +8,4 @@ return {
 		indent = { enable = true },
 	},
 }
+end

@@ -1,4 +1,4 @@
-return {
+if not vim.g.vscode then return {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
       dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim' },
       config = function()
@@ -10,3 +10,4 @@ return {
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help' })
       end
     }
+end

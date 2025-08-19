@@ -1,4 +1,4 @@
-return {
+if not vim.g.vscode then return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = { 'rafamadriz/friendly-snippets' },
@@ -52,3 +52,4 @@ return {
   },
   opts_extend = { "sources.default" }
 }
+end
