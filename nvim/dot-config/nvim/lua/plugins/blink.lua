@@ -52,4 +52,5 @@ if not vim.g.vscode then return {
   },
   opts_extend = { "sources.default" }
 }
+else return {}
 end

@@ -3,4 +3,5 @@ if not vim.g.vscode then return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {}
 }
+else return {}
 end

@@ -72,4 +72,5 @@ if not vim.g.vscode then return {
 		end
 	end,
 }
+else return {}
 end

@@ -8,4 +8,5 @@ if not vim.g.vscode then return {
 		indent = { enable = true },
 	},
 }
+else return {}
 end

@@ -3,4 +3,5 @@ if not vim.g.vscode then return {
     event = "InsertEnter",
     config = true
 }
+else return {}
 end

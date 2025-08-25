@@ -31,9 +31,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGUI_W RGUI_T(KC_W)
 
 // Thumb Layers
-#define FUNC_ESC LT(FUNCTION, KC_ESC)
+#define FUNC_TAB LT(FUNCTION, KC_TAB)
 #define NAV_SPC LT(NAVIGATION, KC_SPC)
-#define NUM_TAB LT(NUMBER, KC_TAB)
+#define NUM_ESC LT(NUMBER, KC_ESC)
 #define SYM_S LT(SYMBOL, KC_S)
 #define MOUS_ENT LT(MOUSE, KC_ENT)
 
@@ -103,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
           KC_LCTL,     KC_H,     KC_I,     KC_E,     KC_A,   KC_DOT,/*|*/      KC_G,     KC_T,     KC_R,     KC_N,     KC_W, KC_RCTL,
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
-          KC_LALT,  KC_SCLN,   KC_EQL, FUNC_ESC,  KC_COMM,  KC_LPRN,/*|*/      KC_B,     KC_D,     KC_M,     KC_P,     KC_K, KC_LGUI,
+          KC_LGUI,  KC_SCLN,   KC_EQL, FUNC_TAB,  KC_COMM,  KC_LPRN,/*|*/      KC_B,     KC_D,     KC_M,     KC_P,     KC_K, KC_LALT,
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
-                                         KC_LSFT, NAV_SPC, NUM_TAB, /*|*/ KC_BSPC, SYM_S, MOUS_ENT
+                                         NUM_ESC, NAV_SPC, KC_LSFT, /*|*/ KC_BSPC, SYM_S, MOUS_ENT
     ),
     [FUNCTION] = LAYOUT_split_3x6_3(
           _______,  _______,  _______,  _______,  _______, _______, /*|*/ DF(QWERTY), KC_F1, KC_F2, KC_F3, _______, _______,
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 _______, _______, _______, /*|*/ _______, _______, _______
     ),
     [QWERTY] = LAYOUT_split_3x6_3(
-         FUNC_ESC,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*|*/      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P, _______,
+         FUNC_TAB,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*|*/      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P, _______,
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
           _______,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*|*/      KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN, _______,
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
