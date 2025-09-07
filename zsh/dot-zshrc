@@ -9,11 +9,14 @@ unsetopt beep
 bindkey -v
 
 alias v=nvim
+alias vgd="nvim --listen /tmp/godot.pipe --cmd \"lua Godot = true\""
+alias tp="trash-put"
 
 alias l=eza
 alias la="eza -a"
 alias ll="eza -l"
 alias lla="eza -la"
+
 
 # Key Bindings
 # create a zkbd compatible hash;

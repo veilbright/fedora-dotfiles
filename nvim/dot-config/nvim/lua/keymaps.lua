@@ -1,6 +1,6 @@
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {desc = "Hide search highlight"})
-vim.keymap.set("n", "<leader><leader>", "@q", {desc = "Run q macro"})
-vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", {desc = "Toggle wrap"})
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Hide search highlight" })
+vim.keymap.set("n", "<leader><leader>", "@q", { desc = "Run q macro" })
+vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", { desc = "Toggle wrap" })
 
 -- Buffer navigation
 vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })
@@ -12,23 +12,27 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Focus lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Focus upper window" })
 
+-- LSP
+vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
+
 -- Find and replace
-vim.keymap.set({"n", "v"}, "<leader>s", function()
-          	vim.api.nvim_feedkeys("*", "v", true)
-          	vim.api.nvim_feedkeys(":%s//", "n", true)
-          end, { desc = "Find and replace" })
+vim.keymap.set({ "n", "v" }, "<leader>s", function()
+	vim.api.nvim_feedkeys("*", "v", true)
+	vim.api.nvim_feedkeys(":%s//", "n", true)
+end, { desc = "Find and replace" })
 
 -- Clipboard management
 vim.keymap.set({ "n", "v" }, "d", '"1d', {})
 vim.keymap.set({ "n", "v" }, "x", '"1x', {})
 vim.keymap.set({ "n", "v" }, "c", '"1c', {})
 vim.keymap.set({ "n", "v" }, "s", '"1s', {})
-vim.keymap.set({"n", "v"}, "<leader>p", function()
-          	local reg1 = vim.fn.getreginfo("1")
-          	local reg_plus = vim.fn.getreginfo("+")
-          	vim.fn.setreg("1", reg_plus)
-          	vim.fn.setreg("+", reg1)
-          end, {desc = "Swap system and neovim registers"})
+vim.keymap.set({ "n", "v" }, "<leader>p", function()
+	local reg1 = vim.fn.getreginfo("1")
+	local reg_plus = vim.fn.getreginfo("+")
+	vim.fn.setreg("1", reg_plus)
+	vim.fn.setreg("+", reg1)
+end, { desc = "Swap system and neovim registers" })
 
 -- Toggle quickfix
 vim.keymap.set({ "n", "v" }, "<leader>q", function()

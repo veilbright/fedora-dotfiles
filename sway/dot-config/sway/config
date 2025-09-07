@@ -13,13 +13,14 @@
     output DP-3 pos 0 0
 
     workspace 1 output eDP-1
-    workspace 2 output DP-3
 
 # Input
     input type:touchpad scroll_factor 0.25
     input type:pointer accel_profile flat
     input type:keyboard repeat_delay 250
     input type:keyboard repeat_rate 25
+
+    input 16700:9485:Dell_Mouse pointer_accel -0.3
 
 # Key bindings
     bindsym $mod+Return exec $term
@@ -53,6 +54,9 @@
     bindsym $mod+Shift+down move down
     bindsym $mod+Shift+up move up
     bindsym $mod+Shift+right move right
+
+    bindsym $mod+m move workspace output up
+    bindsym $mod+n move container output up
 
 # Workspaces
     # Switch to workspace
@@ -118,5 +122,13 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Kill unresponsive applications
+mode "kill" {
+    bindsym Space kill -9 $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .pid')
+    bindsym $mod+t mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+t mode "kill"
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

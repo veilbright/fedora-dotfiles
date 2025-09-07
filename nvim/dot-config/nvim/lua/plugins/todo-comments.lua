@@ -8,6 +8,6 @@ return {
 	init = function()
 		vim.keymap.set("n", "<leader>fd", function()
 			vim.cmd("TodoTelescope")
-		end, { desc = "Open Todo Comments in Telescope" })
+		end, { desc = "Find todo" })
 	end,
 }
