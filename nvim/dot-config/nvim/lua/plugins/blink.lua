@@ -1,8 +1,8 @@
 if not vim.g.vscode then
 	return {
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		version = "1.*",
+		dependencies = { "L3MON4D3/LuaSnip" },
+		version = "v1.*",
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -18,6 +18,8 @@ if not vim.g.vscode then
 				documentation = { auto_show = false },
 				menu = { max_height = 5 },
 			},
+
+			snippets = { preset = "luasnip" },
 
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
