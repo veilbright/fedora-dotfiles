@@ -1,0 +1,7 @@
+configuration {
+  font: "Inter 14";
+  show-icons: true;
+  hover-select: true;
+  drun-display-format: "{name}";
+}
+@theme "./Arc-Dark.rasi"

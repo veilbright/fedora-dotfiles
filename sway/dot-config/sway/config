@@ -6,7 +6,7 @@
     set $right l
     set $term kitty
     set $rofi_cmd rofi -terminal '$term'
-    set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+    set $menu $rofi_cmd -modes 'drun,run' -show drun
 
 # Output
     output eDP-1 pos 640 1080 scale 1.5
@@ -99,7 +99,7 @@
 # Appearance
     default_border pixel
     mouse_warping container
-    font pango:Iosevka Aile 10
+    font pango:Inter 10
 
 # Scratchpad
     bindsym $mod+Shift+minus move scratchpad

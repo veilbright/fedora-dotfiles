@@ -42,6 +42,16 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+    "sway/window": {
+        "format": "{title}@@@{shell}@@@",
+        "tooltip": false,
+        "rewrite": {
+            "(.*)@@@xdg_shell@@@": "$1",
+            "(.*)@@@xwayland@@@": "$1  ",
+            "(.*) — Mozilla Firefox.*": "$1 —  ",
+            "@@@@@@": "",
+        },
+    },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%  ",
         "format-disconnected": "Disconnected  ",
