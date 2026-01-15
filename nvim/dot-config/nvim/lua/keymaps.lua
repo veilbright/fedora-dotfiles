@@ -1,6 +1,8 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Hide search highlight" })
 vim.keymap.set("n", "<leader><leader>", "@q", { desc = "Run q macro" })
+vim.keymap.set("n", "<leader>G", "<cmd>%normal @q<CR>", { desc = "Run q macro until end of file" })
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", { desc = "Toggle wrap" })
+vim.keymap.set("n", "<leader>o", "o<Esc>")
 
 -- Buffer navigation
 vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })
@@ -15,6 +17,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Focus upper window" })
 -- LSP
 vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
+vim.keymap.set("n", "grf", "<cmd> lua vim.lsp.buf.format({ async = false })<CR>", { desc = "Code Format" })
 
 -- Find and replace
 vim.keymap.set({ "n", "v" }, "<leader>s", function()

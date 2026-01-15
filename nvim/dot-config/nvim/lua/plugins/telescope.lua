@@ -25,7 +25,13 @@ if not vim.g.vscode then
 			else
 				vim.keymap.set("n", "<leader>fF", builtin.find_files, { desc = "Find files" })
 				vim.keymap.set("n", "<leader>ff", function()
-					builtin.find_files({ find_command = { "rg", "--files", "--glob=*.gd" } })
+					builtin.find_files({
+						find_command = {
+							"rg",
+							"--files",
+							"--glob=*.gd",
+						},
+					})
 				end, { desc = "Find GDScript files" })
 
 				vim.keymap.set("n", "<leader>fG", builtin.find_files, { desc = "Grep files" })

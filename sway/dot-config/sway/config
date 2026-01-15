@@ -5,6 +5,7 @@
     set $up k
     set $right l
     set $term kitty
+    set $browser firefox
     set $rofi_cmd rofi -terminal '$term'
     set $menu $rofi_cmd -modes 'drun,run' -show drun
 
@@ -21,9 +22,11 @@
     input type:keyboard repeat_rate 25
 
     input 16700:9485:Dell_Mouse pointer_accel -0.3
+    input 16700:9485:Dell_Mouse_MS3320W_Mouse pointer_accel -0.3
 
 # Key bindings
     bindsym $mod+Return exec $term
+    bindsym $mod+c exec $browser
     bindsym $mod+Shift+q kill
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
@@ -98,6 +101,7 @@
 
 # Appearance
     default_border pixel
+    smart_borders on
     mouse_warping container
     font pango:Inter 10
 

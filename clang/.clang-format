@@ -1,0 +1,31 @@
+BasedOnStyle: google
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 2
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  SplitEmptyFunction: false
+  SplitEmptyNamespace: false
+  SplitEmptyRecord: false
+ColumnLimit: 500
+Cpp11BracedListStyle: false
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: true
+  AtStartOfFile: false
+AllowShortFunctionsOnASingleLine: InlineOnly
+ReflowComments: IndentOnly
