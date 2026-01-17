@@ -5,6 +5,7 @@
     set $up k
     set $right l
     set $term kitty
+    set $pdf zathura
     set $browser firefox
     set $rofi_cmd rofi -terminal '$term'
     set $menu $rofi_cmd -modes 'drun,run' -show drun
@@ -28,6 +29,7 @@
     bindsym $mod+Return exec $term
     bindsym $mod+c exec $browser
     bindsym $mod+Shift+q kill
+    bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu); if [ -n "$file" ]; then $pdf "$HOME/$file"; fi'
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
     bindsym $mod+Ctrl+l exec systemctl suspend
