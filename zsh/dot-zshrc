@@ -10,6 +10,7 @@ bindkey -v
 
 alias v=nvim
 alias vgd="nvim --listen /tmp/godot.pipe --cmd \"lua Godot = true\""
+alias vrw="nvim --cmd \"lua Netrw = true\""
 alias tp="trash-put"
 
 alias tmpdir="cd $(mktemp -d)"

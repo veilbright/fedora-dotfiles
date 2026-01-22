@@ -48,7 +48,7 @@
         "rewrite": {
             "(.*)@@@xdg_shell@@@": "$1",
             "(.*)@@@xwayland@@@": "$1  ",
-            "(.*) — Mozilla Firefox.*": "$1 —  ",
+            "(.*) — Mozilla Firefox.*": "$1  ",
             "@@@@@@": "",
         },
     },

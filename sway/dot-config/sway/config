@@ -30,6 +30,7 @@
     bindsym $mod+c exec $browser
     bindsym $mod+Shift+q kill
     bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu); if [ -n "$file" ]; then $pdf "$HOME/$file"; fi'
+    bindsym $mod+Ctrl+c exec 'grim -g "$(slurp -p)" -t ppm - | magick - -format "%[pixel:p{0,0}]" txt:- | sed -nE "2s/.*(#.{6}).*/\1/;2p" | tee >(xargs notify-send) | wl-copy -n'
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
     bindsym $mod+Ctrl+l exec systemctl suspend

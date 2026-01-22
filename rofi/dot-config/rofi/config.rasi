@@ -3,5 +3,6 @@ configuration {
   show-icons: true;
   hover-select: true;
   drun-display-format: "{name}";
+  case-smart: true;
 }
 @theme "./Arc-Dark.rasi"
