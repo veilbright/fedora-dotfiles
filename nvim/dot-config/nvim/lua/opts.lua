@@ -24,7 +24,8 @@ vim.opt.expandtab = true
 vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.list = true
--- vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = vim.g.vscode and 1 or 0
+vim.opt.colorcolumn = { 80 }
 vim.opt.pumheight = 1 -- completions column height
 vim.opt.scrolloff = 10
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "_" }

@@ -11,7 +11,6 @@ bindkey -v
 alias v=nvim
 alias vgd="nvim --listen /tmp/godot.pipe --cmd \"lua Godot = true\""
 alias vrw="nvim --cmd \"lua Netrw = true\""
-alias tp="trash-put"
 
 alias tmpdir="cd $(mktemp -d)"
 
@@ -19,6 +18,9 @@ alias l=eza
 alias la="eza -a"
 alias ll="eza -l"
 alias lla="eza -la"
+
+alias tp="trash-put"
+alias bat="bat -p"
 
 
 # Key Bindings
@@ -74,6 +76,54 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+if [[ $TERM == "foot" ]]; then
+	# Spawn new terminal instances in the current working directory
+	function osc7-pwd() {
+	  emulate -L zsh # also sets localoptions for us
+	  setopt extendedglob
+	  local LC_ALL=C
+	  printf '\e]7;file://%s%s\e\' $HOST ''${PWD//(#m)([^@-Za-z&-;_~])/%''${(l:2::0:)$(([##16]#MATCH))}}
+	}
+	function chpwd-osc7-pwd() {
+	  (( ZSH_SUBSHELL )) || osc7-pwd
+	}
+	autoload -Uz add-zsh-hook
+	add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+	
+	# Update the title to the current running command and current working directory 
+	function fish-pwd() {
+	  printf "${PWD/#$HOME/~}" | sed -re "s#([^a-Z]*[a-Z])[^/]*/#\1/#g"
+	}
+	preexec () {printf "\033];$1 ($(fish-pwd))\007"}
+	precmd () {printf "\033];$(fish-pwd)\007"}
+
+	# Change cursor shape for different vi modes.
+	function zle-keymap-select {
+	  if [[ ${KEYMAP} == vicmd ]] ||
+	     [[ $1 = 'block' ]]; then
+	    echo -ne '\e[0 q'
+	  elif [[ ${KEYMAP} == main ]] ||
+	       [[ ${KEYMAP} == viins ]] ||
+	       [[ ${KEYMAP} = '' ]] ||
+	       [[ $1 = 'beam' ]]; then
+	    echo -ne '\e[5 q'
+	  fi
+	}
+	zle -N zle-keymap-select
+	zle-line-init() {
+	    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	    echo -ne "\e[5 q"
+	}
+	zle -N zle-line-init
+	echo -ne '\e[5 q' # Use beam shape cursor on startup.
+	preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+	# Jump to prompts
+	precmd() {
+    print -Pn "\e]133;A\e\\"
+	}
+fi
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

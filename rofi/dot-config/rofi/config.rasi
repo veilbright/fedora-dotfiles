@@ -1,5 +1,5 @@
 configuration {
-  font: "Inter 14";
+  font: "Inter 12";
   show-icons: true;
   hover-select: true;
   drun-display-format: "{name}";

@@ -1,7 +1,7 @@
 BasedOnStyle: google
 AlignTrailingComments:
   Kind: Always
-  OverEmptyLines: 2
+  OverEmptyLines: 1
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterCaseLabel: false
@@ -21,7 +21,7 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyNamespace: false
   SplitEmptyRecord: false
-ColumnLimit: 500
+ColumnLimit: 200
 Cpp11BracedListStyle: false
 KeepEmptyLines:
   AtEndOfFile: false
@@ -29,3 +29,5 @@ KeepEmptyLines:
   AtStartOfFile: false
 AllowShortFunctionsOnASingleLine: InlineOnly
 ReflowComments: IndentOnly
+SeparateDefinitionBlocks: Always
+EmptyLineBeforeAccessModifier: Always

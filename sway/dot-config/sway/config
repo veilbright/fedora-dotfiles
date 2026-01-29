@@ -1,14 +1,19 @@
 # Variables
-    set $mod Mod4
-    set $left h
-    set $down j
-    set $up k
-    set $right l
-    set $term kitty
-    set $pdf zathura
-    set $browser firefox
-    set $rofi_cmd rofi -terminal '$term'
-    set $menu $rofi_cmd -modes 'drun,run' -show drun
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term kitty
+set $pdf zathura
+set $calc qalc
+set $tui kitty -o placement_strategy=center -o background=#202020 -o single_window_padding_width=8 -o confirm_os_window_close=0
+set $browser firefox
+set $ai firefox -p kiosk claude.ai
+set $editor code
+set $rofi_cmd rofi -terminal '$term'
+set $menu $rofi_cmd -modes 'drun,run' -show drun
+set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggle.sh
 
 # Output
     output eDP-1 pos 640 1080 scale 1.5
@@ -27,14 +32,27 @@
 
 # Key bindings
     bindsym $mod+Return exec $term
-    bindsym $mod+c exec $browser
     bindsym $mod+Shift+q kill
-    bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu); if [ -n "$file" ]; then $pdf "$HOME/$file"; fi'
-    bindsym $mod+Ctrl+c exec 'grim -g "$(slurp -p)" -t ppm - | magick - -format "%[pixel:p{0,0}]" txt:- | sed -nE "2s/.*(#.{6}).*/\1/;2p" | tee >(xargs notify-send) | wl-copy -n'
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+c reload
     bindsym $mod+Ctrl+l exec systemctl suspend
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Open bindings
+    bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu -p "$pdf"); if [ -n "$file" ]; then "$pdf" "$HOME/$file"; fi'
+    bindsym $mod+o exec 'dir=$(fd -t d --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$dir" ]; then "$editor" "$HOME/$dir"; fi'
+    bindsym $mod+Shift+o exec 'file=$(fd -t f -t l --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$file" ]; then "$editor" "$HOME/$file"; fi'
+    bindsym $mod+c exec $scratchpad_toggle -w 600 -h 400 $tui $calc
+    bindsym $mod+a exec $scratchpad_toggle -w 1000 -h 700 $ai
+    # bindsym $mod+a exec $dotfiles/sway/dot-config/sway/scratchpad_toggle.sh "$term $calc"
+
+    # Command bindings
+    bindsym $mod+Ctrl+c exec 'grim -g "$(XCURSOR_SIZE=1 slurp -p -b "#00000000")" -t ppm - | magick - -format "%[pixel:p{0,0}]" txt:- | sed -nE "2s/.*(#.{6}).*/\1/;2p" | tee >(xargs notify-send) | wl-copy -n'
+
+    # toggle editor and terminal
+    bindsym $mod+grave exec ~/dotfiles/sway/dot-config/sway/editor_toggle.sh
+    bindsym $mod+z exec swaymsg "mark --add editor"
+    bindsym $mod+x exec swaymsg "mark --add terminal"
 
     floating_modifier $mod normal
 
@@ -50,6 +68,9 @@
     bindsym $mod+up focus up
     bindsym $mod+right focus right
 
+    bindsym $mod+tab focus next
+    bindsym $mod+Shift+tab focus prev
+
     # Move the focused window
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
@@ -62,7 +83,7 @@
     bindsym $mod+Shift+right move right
 
     bindsym $mod+m move workspace output up
-    bindsym $mod+n move container output up
+    bindsym $mod+Comma move container output up
 
 # Workspaces
     # Switch to workspace
@@ -92,6 +113,7 @@
 # Layout
     bindsym $mod+b splith
     bindsym $mod+v splitv
+    bindsym $mod+n split none
 
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
@@ -100,13 +122,15 @@
 
     bindsym $mod+Shift+space floating toggle
     bindsym $mod+space focus mode_toggle
-    bindsym $mod+a focus parent
 
 # Appearance
-    default_border pixel
-    smart_borders on
+    default_border pixel 2
+    smart_borders no_gaps
+    titlebar_padding 4 1
+    titlebar_border_thickness 1
     mouse_warping container
-    font pango:Inter 10
+    font "pango:Inter Regular" 10
+    seat seat0 xcursor_theme "Adwaita" 24
 
 # Scratchpad
     bindsym $mod+Shift+minus move scratchpad
@@ -119,20 +143,25 @@ mode "resize" {
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
+    bindsym Shift+$left resize shrink width 40px
+    bindsym Shift+$down resize grow height 40px
+    bindsym Shift+$up resize shrink height 40px
+    bindsym Shift+$right resize grow width 40px
+
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
 
     # Return to default mode
-    bindsym Return mode "default"
+    bindsym $mod+r mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
 # Kill unresponsive applications
 mode "kill" {
-    bindsym Space kill -9 $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .pid')
+    bindsym $mod+Shift+q kill -s KILL $(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .pid')
     bindsym $mod+t mode "default"
     bindsym Escape mode "default"
 }
