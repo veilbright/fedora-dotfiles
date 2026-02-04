@@ -29,3 +29,15 @@ vim.opt.colorcolumn = { 80 }
 vim.opt.pumheight = 1 -- completions column height
 vim.opt.scrolloff = 10
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "_" }
+
+-- Signs
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.INFO] = " ",
+			[vim.diagnostic.severity.HINT] = " ",
+		},
+	},
+})

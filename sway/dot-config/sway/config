@@ -175,4 +175,8 @@ mode "kill" {
 }
 bindsym $mod+t mode "kill"
 
+# Brightness
+    bindsym XF86MonBrightnessDown exec brightnessctl -q set ${STEP:-5}%-
+    bindsym XF86MonBrightnessUp exec brightnessctl -q set +${STEP:-5}%
+
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

@@ -1,4 +1,6 @@
-vim.lsp.config("lua_ls", {
+vim.lsp.config["lua_ls"] = {
+	cmd = { vim.fn.stdpath("data") .. "/mason/bin/lua-language-server" },
+	filetypes = { "lua" },
 	settings = {
 		Lua = {
 			runtime = {
@@ -11,7 +13,13 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
-})
+}
+
+vim.lsp.config["clangd"] = {
+	cmd = { vim.fn.stdpath("data") .. "/mason/bin/clangd" },
+	filetypes = { "cpp" },
+}
 
 vim.lsp.enable("gdscript")
 vim.lsp.enable("clangd")
+vim.lsp.enable("lua_ls")
