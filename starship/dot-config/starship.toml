@@ -251,6 +251,9 @@ ssh_symbol = " "
 format = "[$symbol($version)]($style) "
 symbol = " "
 
+[jobs]
+symbol = "󱌣 "
+
 [julia]
 format = "[$symbol($version)]($style) "
 symbol = " "

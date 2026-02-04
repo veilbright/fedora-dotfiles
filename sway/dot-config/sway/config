@@ -6,20 +6,23 @@ set $up k
 set $right l
 set $term kitty
 set $pdf zathura
+set $password flatpak run com.bitwarden.desktop
 set $calc qalc
-set $tui kitty -o placement_strategy=center -o background=#202020 -o single_window_padding_width=8 -o confirm_os_window_close=0
+set $tui kitty -o placement_strategy=center -o background=#29263c -o single_window_padding_width=8 -o confirm_os_window_close=0
 set $browser firefox
 set $ai firefox -p kiosk claude.ai
 set $editor code
 set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -modes 'drun,run' -show drun
 set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggle.sh
+set $screenshot /home/jhor/dotfiles/sway/dot-config/sway/screenshot.sh
 
 # Output
     output eDP-1 pos 640 1080 scale 1.5
     output DP-3 pos 0 0
 
     workspace 1 output eDP-1
+    exec swaymsg workspace number 1
 
 # Input
     input type:touchpad scroll_factor 0.25
@@ -42,17 +45,19 @@ set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggl
     bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu -p "$pdf"); if [ -n "$file" ]; then "$pdf" "$HOME/$file"; fi'
     bindsym $mod+o exec 'dir=$(fd -t d --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$dir" ]; then "$editor" "$HOME/$dir"; fi'
     bindsym $mod+Shift+o exec 'file=$(fd -t f -t l --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$file" ]; then "$editor" "$HOME/$file"; fi'
+
     bindsym $mod+c exec $scratchpad_toggle -w 600 -h 400 $tui $calc
     bindsym $mod+a exec $scratchpad_toggle -w 1000 -h 700 $ai
-    # bindsym $mod+a exec $dotfiles/sway/dot-config/sway/scratchpad_toggle.sh "$term $calc"
+    bindsym $mod+equal exec $scratchpad_toggle -w 900 -h 600 $password
 
     # Command bindings
     bindsym $mod+Ctrl+c exec 'grim -g "$(XCURSOR_SIZE=1 slurp -p -b "#00000000")" -t ppm - | magick - -format "%[pixel:p{0,0}]" txt:- | sed -nE "2s/.*(#.{6}).*/\1/;2p" | tee >(xargs notify-send) | wl-copy -n'
+    bindsym $mod+backslash exec $screenshot
 
-    # toggle editor and terminal
-    bindsym $mod+grave exec ~/dotfiles/sway/dot-config/sway/editor_toggle.sh
-    bindsym $mod+z exec swaymsg "mark --add editor"
-    bindsym $mod+x exec swaymsg "mark --add terminal"
+    # toggle primary and secondary
+    bindsym $mod+grave exec ~/dotfiles/sway/dot-config/sway/primary_toggle.sh
+    bindsym $mod+z exec swaymsg "mark --add primary"
+    bindsym $mod+x exec swaymsg "mark --add secondary"
 
     floating_modifier $mod normal
 
@@ -120,8 +125,8 @@ set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggl
     bindsym $mod+e layout toggle split
     bindsym $mod+f fullscreen
 
-    bindsym $mod+Shift+space floating toggle
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+space floating toggle
+    bindsym $mod+Shift+space focus mode_toggle
 
 # Appearance
     default_border pixel 2
@@ -135,6 +140,9 @@ set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggl
 # Scratchpad
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
+
+# Set floating
+    for_window [title="floating"] floating enable
 
 # Resizing
 mode "resize" {

@@ -2,11 +2,18 @@ if not vim.g.vscode then
 	return {
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-fzy-native.nvim",
+			"nvim-telescope/telescope-symbols.nvim",
+		},
 		config = function()
 			require("telescope").setup({
-				defaults = {
-					layout_strategy = "bottom_pane",
+				pickers = {
+					symbols = {
+						theme = "cursor",
+						layout_config = { height = 0.4, width = 0.3 },
+					},
 				},
 			})
 
@@ -17,6 +24,17 @@ if not vim.g.vscode then
 			-- Set pickers
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Search help" })
+
+			vim.keymap.set("i", "<C-e>", function()
+				builtin.symbols({
+					sources = { "emoji" },
+				})
+			end)
+			vim.keymap.set("i", "<C-m>", function()
+				builtin.symbols({
+					sources = { "math" },
+				})
+			end)
 
 			-- Godot specific overwrites
 			if not Godot then

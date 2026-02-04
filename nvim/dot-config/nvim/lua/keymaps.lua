@@ -5,8 +5,8 @@ vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", { desc = "Toggle wrap" })
 vim.keymap.set("n", "<leader>o", "o<Esc>")
 
 -- Buffer navigation
-vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<C-s>", "<cmd>bn<CR>", { desc = "Next buffer" })
+-- vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })
+-- vim.keymap.set("n", "<C-s>", "<cmd>bn<CR>", { desc = "Next buffer" })
 
 -- Window focus
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left window" })
@@ -18,6 +18,9 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Focus upper window" })
 vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
 vim.keymap.set("n", "grf", "<cmd> lua vim.lsp.buf.format({ async = false })<CR>", { desc = "Code Format" })
+vim.keymap.set("n", "<C-s>", function()
+	vim.lsp.buf.signature_help()
+end)
 
 -- Find and replace
 vim.keymap.set({ "n", "v" }, "<leader>s", function()
