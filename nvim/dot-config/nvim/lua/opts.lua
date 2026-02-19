@@ -28,7 +28,9 @@ vim.opt.list = true
 vim.opt.colorcolumn = { 80 }
 vim.opt.pumheight = 1 -- completions column height
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 20
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "_" }
+vim.opt.numberwidth = 1
 
 -- Signs
 vim.diagnostic.config({
@@ -41,3 +43,6 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+-- Mouse
+vim.opt.mousescroll = "ver:10,hor:4"

@@ -4,4 +4,6 @@ if not vim.g.vscode then
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		opts = { auto_resize_height = true, preview = { win_height = 999 } },
 	}
+else
+	return {}
 end
