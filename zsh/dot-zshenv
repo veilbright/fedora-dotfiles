@@ -3,3 +3,4 @@ export VISUAL=nvim
 
 # uv
 export PATH="/home/jhor/.local/bin:$PATH"
+. "$HOME/.cargo/env"
