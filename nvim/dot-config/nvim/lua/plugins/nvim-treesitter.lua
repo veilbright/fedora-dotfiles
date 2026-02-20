@@ -1,15 +1,52 @@
-if not vim.g.vscode then
-	return {
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		build = ":TSUpdate",
-		opts = {
-			auto_install = true,
-			ignore_install = { "latex" },
-			highlight = { enable = true },
-			indent = { enable = true },
-		},
-	}
-else
-	return {}
-end
+return {
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = ":TSUpdate",
+	cond = not vim.g.vscode,
+	init = function()
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "<filetype>" },
+			callback = function()
+				vim.treesitter.start()
+			end,
+		})
+		require("nvim-treesitter").install({
+			"bash",
+			"c",
+			"comment",
+			"cpp",
+			"css",
+			"desktop",
+			"diff",
+			"dockerfile",
+			"editorconfig",
+			"gitcommit",
+			"gitignore",
+			"html",
+			"http",
+			"ini",
+			"javascript",
+			"json",
+			"kitty",
+			"lua",
+			"make",
+			"markdown",
+			"markdown_inline",
+			"nix",
+			"python",
+			"regex",
+			"rust",
+			"sql",
+			"ssh_config",
+			"svelte",
+			"sway",
+			"toml",
+			"typescript",
+			"udev",
+			"xml",
+			"yaml",
+			"zathurarc",
+			"zsh",
+		})
+	end,
+}

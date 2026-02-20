@@ -42,30 +42,39 @@ end, { desc = "Swap system and neovim registers" })
 
 -- Toggle quickfix
 vim.keymap.set({ "n", "v" }, "<leader>q", function()
-	if vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.loclist")) == 0 then
+	if vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 then
 		vim.cmd("lclose")
-		-- needs to be 2nd, the loclist is a quickfix
-	elseif vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.quickfix")) == 0 then
+	elseif vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
+end, { desc = "Toggle quickfix" })
+
+-- Toggle loclist
+vim.keymap.set({ "n", "v" }, "<leader>l", function()
+	if vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 then
+		vim.cmd("lclose")
+	elseif vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
 		vim.cmd("cclose")
 	else
 		vim.diagnostic.setloclist()
 	end
-end, { desc = "Toggle quickfix" })
+end, { desc = "Toggle loclist" })
 
 -- Quickfix navigation
-vim.keymap.set({ "n", "v" }, "<leader>cn", function()
-	if vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.loclist")) == 0 then
-		vim.cmd("lnext")
-		-- needs to be 2nd, the loclist is a quickfix
-	elseif vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.quickfix")) == 0 then
-		vim.cmd("cnext")
+vim.keymap.set({ "n" }, "<C-n>", function()
+	if vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 then
+		pcall(vim.cmd.lnext)
+	elseif vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+		pcall(vim.cmd.cnext)
 	end
 end, { desc = "Next loc" })
-vim.keymap.set({ "n", "v" }, "<leader>cp", function()
-	if vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.loclist")) == 0 then
-		vim.cmd("lprevious")
-		-- needs to be 2nd, the loclist is a quickfix
-	elseif vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.quickfix")) == 0 then
-		vim.cmd("cprevious")
+
+vim.keymap.set({ "n", "v" }, "<C-p>", function()
+	if vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 then
+		pcall(vim.cmd.lprev)
+	elseif vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+		pcall(vim.cmd.cprev)
 	end
 end, { desc = "Previous loc" })

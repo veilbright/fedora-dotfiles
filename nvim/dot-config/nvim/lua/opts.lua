@@ -14,7 +14,7 @@ vim.opt.inccommand = "split"
 
 -- Indent
 vim.opt.tabstop = 2
-vim.opt.shiftwidth = 0 -- uses tabstop
+vim.opt.shiftwidth = 0   -- uses tabstop
 vim.opt.softtabstop = -1 -- uses shiftwidth
 vim.opt.smarttab = true
 vim.opt.autoindent = true
@@ -32,8 +32,36 @@ vim.opt.sidescrolloff = 20
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "_" }
 vim.opt.numberwidth = 1
 
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
+vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"
+vim.opt.fillchars = {
+	foldopen = "⋅",
+	foldclose = "-",
+	foldsep = " ",
+	fold = " ",
+}
+function _G.foldtext()
+	local num_lines = vim.v.foldend - vim.v.foldstart + 1
+	return vim.fn.getline(vim.v.foldstart)
+			.. " ── "
+			.. num_lines
+			.. " Lines ("
+			.. vim.v.foldstart
+			.. " - "
+			.. vim.v.foldend
+			.. ")"
+end
+
+-- vim.opt.foldtext = "v:lua.foldtext()"
+vim.opt.foldtext = ""
+
 -- Signs
 vim.diagnostic.config({
+	virtual_text = true,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = " ",
