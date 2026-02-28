@@ -25,6 +25,7 @@ if not vim.g.vscode then
 					{ pattern = "todo", icon = " ", color = "blue" },
 					{ pattern = "undo", icon = " ", color = "yellow" },
 					{ pattern = "explorer", icon = " ", color = "yellow" },
+					-- { pattern = "go to", icon = " ", color = "cyan" },
 				},
 			},
 		},

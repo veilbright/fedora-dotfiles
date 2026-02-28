@@ -78,3 +78,8 @@ vim.keymap.set({ "n", "v" }, "<C-p>", function()
 		pcall(vim.cmd.cprev)
 	end
 end, { desc = "Previous loc" })
+
+-- Toggle quickfix diagnostic
+vim.keymap.set({ "n" }, "<leader>Q", function()
+	vim.diagnostic.setqflist()
+end, { desc = "Open quickfix diagnostics" })

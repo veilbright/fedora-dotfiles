@@ -21,7 +21,7 @@
         "backlight",
         "battery",
         "battery#bat2",
-        "clock",
+        "clock"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -49,8 +49,8 @@
             "(.*)@@@xdg_shell@@@": "$1",
             "(.*)@@@xwayland@@@": "$1  ",
             "(.*?) — .*?Mozilla Firefox.*": "$1  ",
-            "@@@@@@": "",
-        },
+            "@@@@@@": ""
+        }
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%  ",
@@ -87,7 +87,7 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"

@@ -10,11 +10,11 @@ set $password flatpak run com.bitwarden.desktop
 set $calc qalc
 set $tui kitty -o placement_strategy=center -o background=#29263c -o single_window_padding_width=8 -o confirm_os_window_close=0
 set $browser firefox
-set $ai firefox -p kiosk claude.ai
 set $editor code
 set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -modes 'drun,run' -show drun
 set $scratchpad_toggle /home/jhor/dotfiles/sway/dot-config/sway/scratchpad_toggle.sh
+set $workspace_toggle /home/jhor/dotfiles/sway/dot-config/sway/workspace_toggle.sh
 set $screenshot /home/jhor/dotfiles/sway/dot-config/sway/screenshot.sh
 
 # Output
@@ -49,7 +49,7 @@ set $screenshot /home/jhor/dotfiles/sway/dot-config/sway/screenshot.sh
     bindsym $mod+Shift+o exec 'file=$(fd -t f -t l --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$file" ]; then "$editor" "$HOME/$file"; fi'
 
     bindsym $mod+c exec $scratchpad_toggle -w 600 -h 400 $tui $calc
-    bindsym $mod+a exec $scratchpad_toggle -w 1000 -h 700 $ai
+    bindsym $mod+a exec $workspace_toggle 󰚩 "firefox --new-instance -P kiosk claude.ai"
     bindsym $mod+equal exec $browser -p kiosk
 
     # Command bindings
