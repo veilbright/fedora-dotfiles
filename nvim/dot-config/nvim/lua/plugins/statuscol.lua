@@ -157,10 +157,10 @@ return {
 		-- local builtin = require("statuscol.builtin")
 		require("statuscol").setup({
 			segments = {
-				{
-					text = { foldfunc },
-					click = "v:lua.ScFa",
-				},
+				-- {
+				-- 	text = { foldfunc },
+				-- 	click = "v:lua.ScFa",
+				-- },
 				{
 					sign = {
 						name = { ".*" },

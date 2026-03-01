@@ -6,7 +6,7 @@ if not vim.g.vscode then
 				default_file_explorer = not Netrw, -- If Netrw is true, set default_file_explorer to false
 				view_options = {
 					show_hidden = true,
-					is_always_hidden = function(name, bufnr)
+					is_always_hidden = function(name, _)
 						return vim.endswith(name, ".uid")
 					end,
 				},
