@@ -128,6 +128,9 @@ fi
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
+# Functions
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/functions.zsh"
+
 # Syntax highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]="fg=red,bold"
