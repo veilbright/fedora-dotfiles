@@ -1,0 +1,18 @@
+#pager "less %f"
+browser firefox
+refresh-on-startup yes
+bind k everywhere up
+bind j everywhere down
+
+color background          white    black
+color listnormal          white    black
+color listfocus           black    color15  dim
+color listnormal_unread   color15  black    bold
+color listfocus_unread    black    color15  bold
+color title               color15  color8   bold
+color info                color15  color8
+color hint-key            color15  color8   bold
+color hint-keys-delimiter color15  color8
+color hint-separator      color15  color8
+color hint-description    color15  color8
+color article             color15  black

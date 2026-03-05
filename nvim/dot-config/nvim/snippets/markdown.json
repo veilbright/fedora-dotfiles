@@ -1,7 +1,7 @@
 {
   "Superscript": {
     "prefix": [
-      "<super>",
+      "<sup>",
       "^1",
       "^2",
       "^3",
@@ -39,7 +39,7 @@
       "^y",
       "^z"
     ],
-    "body": ["<super>$1</super>"]
+    "body": ["<sup>$1</sup>"]
   },
   "Subscript": {
     "prefix": ["<sub>", "_"],

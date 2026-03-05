@@ -13,6 +13,7 @@ alias vgd="nvim --listen /tmp/godot.pipe --cmd \"lua Godot = true\""
 alias vrw="nvim --cmd \"lua Netrw = true\""
 
 alias tmpdir='cd $(mktemp -d)'
+alias tmpfile="$EDITOR \$(mktemp)"
 
 alias l=eza
 alias la="eza -a"
