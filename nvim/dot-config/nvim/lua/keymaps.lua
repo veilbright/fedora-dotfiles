@@ -3,6 +3,7 @@ vim.keymap.set("n", "<leader><leader>", "@q", { desc = "Run q macro" })
 vim.keymap.set("n", "<leader>G", "<cmd>%normal @q<CR>", { desc = "Run q macro until end of file" })
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", { desc = "Toggle wrap" })
 vim.keymap.set("n", "<leader>o", "o<Esc>")
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy update<CR>")
 
 -- Buffer navigation
 -- vim.keymap.set("n", "<C-a>", "<cmd>bp<CR>", { desc = "Previous buffer" })

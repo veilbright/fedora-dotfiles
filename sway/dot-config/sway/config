@@ -43,10 +43,12 @@ set $screenshot /home/jhor/dotfiles/sway/dot-config/sway/screenshot.sh
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Open bindings
+    # TODO: change $mod+o to open a dmenu to select the correct dmenu
     bindsym $mod+p exec 'file=$(fd -e pdf --base-directory ~ | rofi -dmenu -p "$pdf"); if [ -n "$file" ]; then "$pdf" "$HOME/$file"; fi'
     bindsym $mod+Shift+p exec 'file=$(fd -H -I -e pdf --base-directory ~ | rofi -dmenu -p "$pdf"); if [ -n "$file" ]; then "$pdf" "$HOME/$file"; fi'
     bindsym $mod+o exec 'dir=$(fd -t d --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$dir" ]; then "$editor" "$HOME/$dir"; fi'
     bindsym $mod+Shift+o exec 'file=$(fd -t f -t l --base-directory ~ | rofi -dmenu -p "$editor"); if [ -n "$file" ]; then "$editor" "$HOME/$file"; fi'
+    bindsym $mod+s exec 'file=$(fd -e sh --base-directory ~ | rofi -dmenu -p exec); if [ -n "$file" ]; then "$HOME/$file"; fi'
 
     bindsym $mod+c exec $scratchpad_toggle -w 600 -h 400 $tui $calc
     bindsym $mod+a exec $workspace_toggle   "firefox --new-instance -P kiosk claude.ai"
@@ -119,7 +121,6 @@ set $screenshot /home/jhor/dotfiles/sway/dot-config/sway/screenshot.sh
     bindsym $mod+Shift+0 move container to workspace number 10
 
 # Layout
-    bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
     bindsym $mod+f fullscreen
