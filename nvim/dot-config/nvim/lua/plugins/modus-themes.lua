@@ -10,7 +10,9 @@ return {
 		vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#000000" })
 		vim.api.nvim_set_hl(0, "FoldClosed", { fg = "#d0bc00" })
 		vim.api.nvim_set_hl(0, "Folded", {link = "Normal"})
+		vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
 		vim.api.nvim_set_hl(0, "QuickFixLine", { link = "Visual"})
+		vim.api.nvim_set_hl(0, "", { link = "Visual"})
 		vim.api.nvim_set_hl(0, "FoldColumn", {
 			fg = vim.api.nvim_get_hl(0, { name = "LineNrAbove" }).fg,
 			bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg,

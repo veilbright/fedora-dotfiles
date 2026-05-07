@@ -20,6 +20,13 @@ vim.lsp.config["lua_ls"] = {
 	},
 }
 
+vim.lsp.config["ruff"] = {
+	cmd = { "ruff", "server" },
+	filetypes = { "python" },
+	root_markers = { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
+	settings = {},
+}
+
 vim.lsp.config["rust-analyzer"] = {
 	-- cmd = { vim.fn.stdpath("data") .. "/../../../.cargo/bin/rust-analyzer" },
 	cmd = { "rust-analyzer" },
@@ -98,5 +105,6 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("gdscript")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
 vim.lsp.enable("rust-analyzer")
 vim.lsp.enable("typos_lsp")

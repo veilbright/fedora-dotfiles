@@ -7,7 +7,15 @@ if not vim.g.vscode then
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = false,
+				["<S-Tab>"] = false,
+				["<C-j>"] = { "snippet_forward", "fallback" },
+				["<C-k>"] = { "snippet_backward", "fallback" },
+				-- ["<C-k>"] = { "scroll_documentation_up", "fallback" },
+				-- ["<C-j>"] = { "scroll_documentation_down", "fallback" },
+			},
 
 			appearance = {
 				use_nvim_cmp_as_default = true,
