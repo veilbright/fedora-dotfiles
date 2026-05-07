@@ -35,6 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NAV_SPC LT(NAVIGATION, KC_SPC)
 #define NUM_ESC LT(NUMBER, KC_ESC)
 #define SYM_S LT(SYMBOL, KC_S)
+#define SYM_TAB LT(SYMBOL, KC_TAB)
 #define MOUS_ENT LT(MOUSE, KC_ENT)
 
 // Left hand Symbol home row
@@ -87,6 +88,7 @@ const key_override_t symbol_override13 = ko_make_basic(MOD_MASK_SHIFT, KC_PERCEN
 const key_override_t symbol_override14 = ko_make_basic(MOD_MASK_SHIFT, KC_LEFT_BRACKET, KC_RIGHT_BRACKET);
 const key_override_t symbol_override15 = ko_make_basic(MOD_MASK_SHIFT, KC_TILDE, KC_TILDE);
 const key_override_t symbol_override16 = ko_make_basic(MOD_MASK_SHIFT, KC_DOLLAR, KC_DOLLAR);
+const key_override_t symbol_override17 = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_AT);
 
 const key_override_t *key_overrides[] = {
     &base_override1,    &base_override2,    &base_override3,
@@ -98,6 +100,15 @@ const key_override_t *key_overrides[] = {
     &symbol_override14, &symbol_override15, &symbol_override16};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // [BASE] = LAYOUT_split_3x6_3(
+    //         KC_AT,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*|*/      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,  KC_EQL,
+    //     /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
+    //       KC_LCTL,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*|*/      KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN, KC_RCTL,
+    //     /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
+    //       KC_LGUI,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,/*|*/      KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_LPRN, KC_LALT,
+    //     /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
+    //                                     NUM_ESC,  NAV_SPC,  KC_LSFT,/*|*/   KC_BSPC,  SYM_TAB, MOUS_ENT
+    // ),
     [BASE] = LAYOUT_split_3x6_3(
              KC_Q,     KC_J,     KC_Y,     KC_O,     KC_U,     KC_X,/*|*/      KC_V,      KC_C,     KC_L,    KC_F,     KC_Z, TG(QWERTY),
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
@@ -150,15 +161,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, /*|*/ _______, _______, _______, _______, _______, _______,
         /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
                                 _______, _______, _______, /*|*/ _______, _______, _______
-    ),
-    [QWERTY] = LAYOUT_split_3x6_3(
-         FUNC_TAB,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,/*|*/      KC_Y,     KC_U,     KC_I,     KC_O,     KC_P, _______,
-        /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
-          _______,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,/*|*/      KC_H,     KC_J,     KC_K,     KC_L,  KC_SCLN, _______,
-        /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
-          _______,     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,/*|*/      KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSH, _______,
-        /* - - - | - - - - | - - - - | - - - - | - - - - | - - - - -  |  - - - - - | - - - - | - - - - | - - - - | - - - - | - - - */
-                                         _______, _______, _______, /*|*/ _______, _______, _______
     ),
 };
 

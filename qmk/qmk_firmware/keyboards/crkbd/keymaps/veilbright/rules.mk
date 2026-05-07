@@ -1,2 +1,3 @@
 KEY_OVERRIDE_ENABLE = yes
 MOUSEKEY_ENABLE = yes
+CONVERT_TO = sparkfun_pm2040
